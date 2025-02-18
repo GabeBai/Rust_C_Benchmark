@@ -1,0 +1,16 @@
+[package]
+name = "bfs"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "bfs"
+path = "src/bfs.rs"
+
+[[bin]]
+name = "bfs_perf"
+path = "src/bfs_perf.rs"
+
+[dependencies]
+nix = { version = "0.29.0", features = ["signal", "process"] }
+rand = "0.8" 

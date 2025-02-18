@@ -1,0 +1,10 @@
+
+ Performance counter stats for process id '1999164':
+
+   <not supported>      cycles                                                                
+   <not supported>      instructions                                                          
+   <not supported>      cache-references                                                      
+   <not supported>      cache-misses                                                          
+
+       2.002234433 seconds time elapsed
+

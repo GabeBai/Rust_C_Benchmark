@@ -1,0 +1,19 @@
+[package]
+name = "dfs"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "dfs"
+path = "src/dfs.rs"
+
+[[bin]]
+name = "dfs_perf"
+path = "src/dfs_perf.rs"
+
+[dependencies]
+nix = { version = "0.29.0", features = ["signal", "process"] }
+
+rand = "0.8" 
+
+

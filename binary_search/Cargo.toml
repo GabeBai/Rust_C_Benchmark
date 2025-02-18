@@ -1,0 +1,16 @@
+[package]
+name = "binary_search"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "binary_search"
+path = "src/binary_search.rs"
+
+[[bin]]
+name = "binary_search_perf"
+path = "src/binary_search_perf.rs"
+
+[dependencies]
+nix = { version = "0.29.0", features = ["signal", "process"] }
+rand = "0.8" 
