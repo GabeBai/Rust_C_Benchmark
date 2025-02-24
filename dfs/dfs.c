@@ -29,24 +29,18 @@ void generateRandomGraph(int** adjMatrix, int n) {
     }
 }
 
-void printAdjMatrix(int** adjMatrix, int n) {
-    printf("Adjacency Matrix:\n");
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%d ", adjMatrix[i][j]);
-        }
-        printf("\n");
-    }
-}
-
 void dfs(int** adjMatrix, int n, int start, int* visited) {
     visited[start] = 1;
-
     for (int i = 0; i < n; i++) {
         if (adjMatrix[start][i] == 1 && !visited[i]) {
             dfs(adjMatrix, n, i, visited);
         }
     }
+}
+
+double diff_timespec(struct timespec *time1, struct timespec *time0) {
+    return (time1->tv_sec - time0->tv_sec)
+        + (time1->tv_nsec - time0->tv_nsec) / 1000000000.0;
 }
 
 int main(int argc, char* argv[]) {
@@ -67,15 +61,14 @@ int main(int argc, char* argv[]) {
 
     int* visited = (int*)calloc(size, sizeof(int));
 
+    struct timespec start_time, end_time;
 
-    clock_t start_time, end_time;
-    double time_elapsed;
-
-    // Measure the time for dfs
-    start_time = clock();
+    // Measure the time for DFS
+    clock_gettime(CLOCK_MONOTONIC, &start_time);
     dfs(adjMatrix, size, 0, visited);
-    end_time = clock();
-    time_elapsed = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
+    clock_gettime(CLOCK_MONOTONIC, &end_time);
+
+    double time_elapsed = diff_timespec(&end_time, &start_time);
 
     printf("Time taken to search graph of size %d: %f seconds\n", size, time_elapsed);
 

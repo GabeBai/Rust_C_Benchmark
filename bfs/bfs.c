@@ -67,6 +67,12 @@ void bfs(int** adjMatrix, int n, int start) {
     free(queue);
 }
 
+// Function to compute the time difference using timespec struct
+double diff_timespec(struct timespec *time1, struct timespec *time0) {
+    return (time1->tv_sec - time0->tv_sec)
+        + (time1->tv_nsec - time0->tv_nsec) / 1000000000.0;
+}
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         printf("Usage: %s <number_of_nodes>\n", argv[0]);
@@ -83,17 +89,15 @@ int main(int argc, char* argv[]) {
     int** adjMatrix = createAdjMatrix(size);
     generateRandomGraph(adjMatrix, size);
 
-
-    printf("\nPerforming Breadth First Search starting from node 0:\n");
-
-    clock_t start_time, end_time;
+    // Time BFS execution
+    struct timespec start_time, end_time;
     double time_elapsed;
 
-    start_time = clock();
-    bfs(adjMatrix, size, 0);
-    end_time = clock();
-    time_elapsed = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
+    clock_gettime(CLOCK_MONOTONIC, &start_time); // Start time
+    bfs(adjMatrix, size, 0);  // Perform BFS
+    clock_gettime(CLOCK_MONOTONIC, &end_time); // End time
 
+    time_elapsed = diff_timespec(&end_time, &start_time); // Calculate time difference
     printf("Time taken to search graph of size %d: %f seconds\n", size, time_elapsed);
 
     freeAdjMatrix(adjMatrix, size);
