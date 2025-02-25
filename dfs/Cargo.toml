@@ -15,5 +15,6 @@ path = "src/dfs_perf.rs"
 nix = { version = "0.29.0", features = ["signal", "process"] }
 
 rand = "0.8" 
+libc = "0.2"
 
 
