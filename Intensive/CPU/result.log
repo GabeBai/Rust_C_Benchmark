@@ -1,0 +1,5 @@
+c++:
+CPU-intensive test: sum = 27.8667, time elapsed 13.0568 seconds.
+
+rust:
+CPU-intensive test: sum = 27.866734031660055, time elapsed 24.090073856s

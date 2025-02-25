@@ -1,0 +1,9 @@
+c++:
+Initialization time: 1.00926 seconds.
+Memory copy time: 0.0518096 seconds.
+Memory modification time: 3.05756 seconds.
+
+rust:
+Initialization time: 3.87774327s
+Memory copy time: 259.48368ms
+Memory modification time: 2.278991098s

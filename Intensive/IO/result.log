@@ -1,0 +1,7 @@
+c++:
+Writing 100000000 lines took: 10.6019 seconds.
+Reading file took: 1.56471 seconds.
+
+rust:
+Writing 100000000 lines took: 2.680302278s
+Reading file took: 1.534864553s
