@@ -1,5 +1,5 @@
 [package]
-name = "selection_sort_test"
+name = "selection_sort"
 version = "0.1.0"
 edition = "2021"
 
@@ -14,3 +14,7 @@ path = "src/selection_sort_perf.rs"
 [dependencies]
 nix = { version = "0.29.0", features = ["signal", "process"] }
 rand = "0.8" 
+libc = "0.2"
+
+[build]
+rustflags = ["-C", "llvm-args=-disable-sroa"]

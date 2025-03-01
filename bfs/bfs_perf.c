@@ -47,7 +47,7 @@ void bfs(int** adjMatrix, int n, int start) {
 
     while (front < rear) {
         int current = queue[front++];
-        printf("Visited node %d\n", current);
+        // printf("Visited node %d\n", current);
 
         for (int i = 0; i < n; i++) {
             if (adjMatrix[current][i] == 1 && !visited[i]) {

@@ -1,0 +1,296 @@
+perf stat -e cycles,instructions,cache-references,cache-misses ./bfs_perf_c 10000
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '6962':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+            44,585      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+            18,148      cpu_core/instructions/           #    0.41  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+             4,284      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+               474      cpu_core/cache-misses/           #   11.06% of all cache refs         
+
+       0.991496978 seconds time elapsed
+
+
+Time taken to search graph of size 10000: 0.000002 seconds
+
+ Performance counter stats for './bfs_perf_c 10000':
+
+     1,930,433,222      cpu_atom/cycles/                                                        (1.18%)
+     3,317,795,657      cpu_core/cycles/                                                        (99.62%)
+     2,401,647,259      cpu_atom/instructions/           #    1.24  insn per cycle              (1.18%)
+     4,056,917,924      cpu_core/instructions/           #    1.22  insn per cycle              (99.62%)
+        73,775,198      cpu_atom/cache-references/                                              (1.18%)
+        40,573,876      cpu_core/cache-references/                                              (99.62%)
+        35,153,354      cpu_atom/cache-misses/           #   47.65% of all cache refs           (1.18%)
+        14,922,175      cpu_core/cache-misses/           #   36.78% of all cache refs           (99.62%)
+
+       1.676302073 seconds time elapsed
+
+       0.560404000 seconds user
+       0.124702000 seconds sys
+
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./target/debug/bfs_perf 10000
+
+[ Perf Stat Output ]
+
+Time taken to search graph of size 10000: 0.955104 seconds
+
+ Performance counter stats for './target/debug/bfs_perf 10000':
+
+    24,245,378,847      cpu_atom/cycles/                                                        (0.03%)
+    85,083,700,584      cpu_core/cycles/                                                        (99.97%)
+    19,533,337,448      cpu_atom/instructions/           #    0.81  insn per cycle              (0.03%)
+   151,355,075,806      cpu_core/instructions/           #    1.78  insn per cycle              (99.97%)
+       615,001,500      cpu_atom/cache-references/                                              (0.03%)
+        92,816,974      cpu_core/cache-references/                                              (99.97%)
+       349,879,113      cpu_atom/cache-misses/           #   56.89% of all cache refs           (0.03%)
+        27,911,156      cpu_core/cache-misses/           #   30.07% of all cache refs           (99.97%)
+
+      18.086771203 seconds time elapsed
+
+      16.972760000 seconds user
+       0.116671000 seconds sys
+
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./dfs_perf_c 10000
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '7789':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+     1,549,449,655      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+       687,019,867      cpu_core/instructions/           #    0.44  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+         7,202,330      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+         3,007,270      cpu_core/cache-misses/           #   41.75% of all cache refs         
+
+       1.305258217 seconds time elapsed
+
+
+Time taken to search graph of size 10000: 0.315035 seconds
+
+ Performance counter stats for './dfs_perf_c 10000':
+
+     3,769,057,681      cpu_atom/cycles/                                                        (1.12%)
+     4,836,921,938      cpu_core/cycles/                                                      
+     4,574,061,638      cpu_atom/instructions/           #    1.21  insn per cycle              (1.12%)
+     4,705,693,377      cpu_core/instructions/           #    0.97  insn per cycle            
+       110,183,830      cpu_atom/cache-references/                                              (1.12%)
+        49,045,660      cpu_core/cache-references/                                            
+        58,029,910      cpu_atom/cache-misses/           #   52.67% of all cache refs           (1.12%)
+        18,362,352      cpu_core/cache-misses/           #   37.44% of all cache refs         
+
+       2.987823001 seconds time elapsed
+
+       0.878979000 seconds user
+       0.119946000 seconds sys
+
+
+ perf stat -e cycles,instructions,cache-references,cache-misses ./target/debug/dfs_perf 10000
+
+[ Perf Stat Output ]
+
+Time taken to search graph of size 10000: 1.164742 seconds
+
+ Performance counter stats for './target/debug/dfs_perf 10000':
+
+    65,226,192,998      cpu_atom/cycles/                                                        (0.01%)
+    86,494,349,664      cpu_core/cycles/                                                        (99.99%)
+    50,686,407,693      cpu_atom/instructions/           #    0.78  insn per cycle              (0.01%)
+   152,877,067,992      cpu_core/instructions/           #    1.77  insn per cycle              (99.99%)
+     1,572,044,493      cpu_atom/cache-references/                                              (0.01%)
+        89,631,983      cpu_core/cache-references/                                              (99.99%)
+       965,531,959      cpu_atom/cache-misses/           #   61.42% of all cache refs           (0.01%)
+        31,304,338      cpu_core/cache-misses/           #   34.93% of all cache refs           (99.99%)
+
+      18.361906961 seconds time elapsed
+
+      17.247266000 seconds user
+       0.113489000 seconds sys
+
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./binary_search_perf_c 100000000
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '8768':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+   135,762,631,433      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+   292,486,548,979      cpu_core/instructions/           #    2.15  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+        12,542,317      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+         2,613,574      cpu_core/cache-misses/           #   20.84% of all cache refs         
+
+      28.230322123 seconds time elapsed
+
+
+Time taken to search array of size 100000000: 15.216864 seconds
+
+ Performance counter stats for './binary_search_perf_c 100000000':
+
+    46,058,033,938      cpu_atom/cycles/                                                        (0.05%)
+   136,339,758,561      cpu_core/cycles/                                                        (99.95%)
+    58,744,370,979      cpu_atom/instructions/           #    1.28  insn per cycle              (0.05%)
+   293,442,793,125      cpu_core/instructions/           #    2.15  insn per cycle              (99.95%)
+     1,386,543,979      cpu_atom/cache-references/                                              (0.05%)
+        21,099,908      cpu_core/cache-references/                                              (99.95%)
+     1,025,767,530      cpu_atom/cache-misses/           #   73.98% of all cache refs           (0.05%)
+         9,835,676      cpu_core/cache-misses/           #   46.61% of all cache refs           (99.95%)
+
+      29.361306702 seconds time elapsed
+
+       9.412062000 seconds user
+      17.956293000 seconds sys
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./target/debug/binary_search_perf 100000000
+
+[ Perf Stat Output ]
+
+Time taken to search array of size 100000000: 17.186332 seconds
+
+ Performance counter stats for './target/debug/binary_search_perf 100000000':
+
+    66,970,593,058      cpu_atom/cycles/                                                        (0.06%)
+   100,478,488,606      cpu_core/cycles/                                                        (99.96%)
+    79,405,173,677      cpu_atom/instructions/           #    1.19  insn per cycle              (0.06%)
+   210,813,729,535      cpu_core/instructions/           #    2.10  insn per cycle              (99.96%)
+     2,199,947,538      cpu_atom/cache-references/                                              (0.06%)
+        20,261,390      cpu_core/cache-references/                                              (99.96%)
+     1,034,356,843      cpu_atom/cache-misses/           #   47.02% of all cache refs           (0.06%)
+        11,073,569      cpu_core/cache-misses/           #   54.65% of all cache refs           (99.96%)
+
+      21.171107272 seconds time elapsed
+
+      20.075082000 seconds user
+       0.099293000 seconds sys
+
+
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./quicksort_perf_c 100000000
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '9974':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+    31,762,971,031      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+    27,784,752,531      cpu_core/instructions/           #    0.87  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+       129,526,867      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+        27,474,887      cpu_core/cache-misses/           #   21.21% of all cache refs         
+
+       7.377134478 seconds time elapsed
+
+
+Time taken to sort the array of size 100000000: 6.385457 seconds
+
+ Performance counter stats for './quicksort_perf_c 100000000':
+
+    28,249,632,515      cpu_atom/cycles/                                                        (0.14%)
+    37,268,143,327      cpu_core/cycles/                                                      
+    37,186,443,690      cpu_atom/instructions/           #    1.32  insn per cycle              (0.14%)
+    34,783,204,285      cpu_core/instructions/           #    0.93  insn per cycle            
+       785,097,583      cpu_atom/cache-references/                                              (0.14%)
+       137,779,587      cpu_core/cache-references/                                            
+       424,722,739      cpu_atom/cache-misses/           #   54.10% of all cache refs           (0.14%)
+        34,430,132      cpu_core/cache-misses/           #   24.99% of all cache refs         
+
+       8.499738348 seconds time elapsed
+
+       7.379803000 seconds user
+       0.128688000 seconds sys
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./target/debug/quicksort_perf 10000000
+
+[ Perf Stat Output ]
+
+Time taken to sort the array of size 10000000: 37.887185 seconds
+
+ Performance counter stats for './target/debug/quicksort_perf 10000000':
+
+    96,458,847,556      cpu_atom/cycles/                                                        (0.02%)
+   202,545,674,011      cpu_core/cycles/                                                        (99.98%)
+   168,403,629,246      cpu_atom/instructions/           #    1.75  insn per cycle              (0.02%)
+   708,876,443,104      cpu_core/instructions/           #    3.50  insn per cycle              (99.98%)
+     1,486,990,466      cpu_atom/cache-references/                                              (0.02%)
+        17,409,160      cpu_core/cache-references/                                              (99.98%)
+       387,323,405      cpu_atom/cache-misses/           #   26.05% of all cache refs           (0.02%)
+         2,256,190      cpu_core/cache-misses/           #   12.96% of all cache refs           (99.98%)
+
+      41.162028997 seconds time elapsed
+
+      40.643449000 seconds user
+       0.013759000 seconds sys
+
+
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./selection_sort_c 200000
+Time taken to sort the array of size 200000: 5.386161 seconds
+
+ Performance counter stats for './selection_sort_c 200000':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+    26,825,568,883      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+   200,068,957,218      cpu_core/instructions/           #    7.46  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+         6,172,446      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+            64,617      cpu_core/cache-misses/           #    1.05% of all cache refs         
+
+       5.393585532 seconds time elapsed
+
+       5.390513000 seconds user
+       0.001999000 seconds sys
+
+
+
+
+perf stat -e cycles,instructions,cache-references,cache-misses ./target/debug/selection_sort 200000
+Time taken to sort the array of size 200000: 56.541760 seconds, with *TODO* iterations
+
+ Performance counter stats for './target/debug/selection_sort 200000':
+
+    44,730,408,403      cpu_atom/cycles/                                                        (0.00%)
+   281,793,825,900      cpu_core/cycles/                                                        (100.00%)
+    48,678,510,014      cpu_atom/instructions/           #    1.09  insn per cycle              (0.00%)
+ 1,340,652,902,572      cpu_core/instructions/           #    4.76  insn per cycle              (100.00%)
+       898,999,507      cpu_atom/cache-references/                                              (0.00%)
+        17,678,672      cpu_core/cache-references/                                              (100.00%)
+       197,740,981      cpu_atom/cache-misses/           #   22.00% of all cache refs           (0.00%)
+           212,522      cpu_core/cache-misses/           #    1.20% of all cache refs           (100.00%)
+
+      56.552960151 seconds time elapsed
+
+      56.540363000 seconds user
+       0.001999000 seconds sys
+
+

@@ -59,10 +59,9 @@ fn main() {
 
     unsafe {
         println!(
-            "Time taken to sort the array of size {}: {:.6} seconds, with {} iterations",
+            "Time taken to sort the array of size {}: {:.6} seconds, with *TODO* iterations",
             size,
-            time_elapsed,
-            count
+            time_elapsed
         );
     }
 }

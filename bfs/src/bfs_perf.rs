@@ -34,7 +34,7 @@ fn bfs(adj_matrix: &Vec<Vec<i32>>, n: usize, start: usize) {
     queue.push_back(start);
 
     while let Some(current) = queue.pop_front() {
-        println!("Visited node {}", current);
+        // println!("Visited node {}", current);
 
         for (i, &is_connected) in adj_matrix[current].iter().enumerate() {
             if is_connected == 1 && !visited[i] {
