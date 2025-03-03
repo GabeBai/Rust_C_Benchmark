@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '10270':
+
+    40,359,406,687      cpu_atom/cycles/                                                        (0.00%)
+    77,938,706,385      cpu_core/cycles/                                                        (100.00%)
+    68,036,251,060      cpu_atom/instructions/           #    1.69  insn per cycle              (0.00%)
+   159,664,014,231      cpu_core/instructions/           #    2.05  insn per cycle              (100.00%)
+       457,179,791      cpu_atom/cache-references/                                              (0.00%)
+        10,087,292      cpu_core/cache-references/                                              (100.00%)
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+         3,114,213      cpu_core/cache-misses/           #   30.87% of all cache refs           (100.00%)
+
+      17.016473619 seconds time elapsed
+

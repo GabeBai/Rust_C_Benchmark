@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '10991':
+
+    10,520,790,980      cpu_atom/cycles/                                                        (0.00%)
+    60,341,285,281      cpu_core/cycles/                                                        (100.00%)
+     3,700,039,820      cpu_atom/instructions/           #    0.35  insn per cycle              (0.00%)
+   450,123,131,191      cpu_core/instructions/           #    7.46  insn per cycle              (100.00%)
+       206,654,247      cpu_atom/cache-references/                                              (0.00%)
+       190,231,949      cpu_core/cache-references/                                              (100.00%)
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+            68,671      cpu_core/cache-misses/           #    0.04% of all cache refs           (100.00%)
+
+      13.189513998 seconds time elapsed
+

@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '9606':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+   108,986,910,760      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+   233,696,493,903      cpu_core/instructions/           #    2.14  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+        10,681,718      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+         2,158,028      cpu_core/cache-misses/           #   20.20% of all cache refs         
+
+      22.932158758 seconds time elapsed
+

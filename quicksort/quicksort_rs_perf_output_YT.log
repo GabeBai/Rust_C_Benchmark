@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '10602':
+
+ 2,078,075,613,348      cpu_atom/cycles/                                                        (0.01%)
+ 2,749,659,389,647      cpu_core/cycles/                                                        (99.99%)
+ 7,565,667,999,803      cpu_atom/instructions/           #    3.64  insn per cycle              (0.01%)
+10,049,897,103,752      cpu_core/instructions/           #    3.65  insn per cycle              (99.99%)
+       376,614,731      cpu_atom/cache-references/                                              (0.01%)
+       157,335,047      cpu_core/cache-references/                                              (99.99%)
+        49,103,596      cpu_atom/cache-misses/           #   13.04% of all cache refs           (0.01%)
+        10,575,345      cpu_core/cache-misses/           #    6.72% of all cache refs           (99.99%)
+
+     555.537329986 seconds time elapsed
+

@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '9522':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+    30,013,270,940      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+   103,873,711,184      cpu_core/instructions/           #    3.46  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+        43,745,503      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+        12,941,809      cpu_core/cache-misses/           #   29.58% of all cache refs         
+
+       8.008792768 seconds time elapsed
+
