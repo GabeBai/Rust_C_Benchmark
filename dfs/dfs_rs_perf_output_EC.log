@@ -1,0 +1,35 @@
+
+[ Perf Stat Output ]
+
+Time taken to search graph of size 30000: 3.442362 seconds
+
+ Performance counter stats for 'cargo run --bin dfs_perf --release -- 30000':
+
+         14,998.60 msec task-clock                       #    1.340 CPUs utilized
+             5,670      context-switches                 #  378.035 /sec
+               349      cpu-migrations                   #   23.269 /sec
+         1,294,723      page-faults                      #   86.323 K/sec
+    30,881,424,295      cpu_atom/cycles/                 #    2.059 GHz                         (6.53%)
+    72,565,941,688      cpu_core/cycles/                 #    4.838 GHz                         (95.46%)
+    37,771,240,931      cpu_atom/instructions/           #    1.22  insn per cycle              (7.70%)
+    94,754,078,560      cpu_core/instructions/           #    3.07  insn per cycle              (95.46%)
+     7,270,426,060      cpu_atom/branches/               #  484.740 M/sec                       (7.72%)
+    18,251,997,748      cpu_core/branches/               #    1.217 G/sec                       (95.46%)
+       240,943,452      cpu_atom/branch-misses/          #    3.31% of all branches             (7.76%)
+       991,592,840      cpu_core/branch-misses/          #   13.64% of all branches             (95.46%)
+             TopdownL1 (cpu_core)                 #     20.2 %  tma_backend_bound
+                                                  #     22.6 %  tma_bad_speculation
+                                                  #     36.3 %  tma_frontend_bound
+                                                  #     20.9 %  tma_retiring             (95.46%)
+             TopdownL1 (cpu_atom)                 #     24.0 %  tma_bad_speculation
+                                                  #     26.5 %  tma_retiring             (7.69%)
+                                                  #     14.3 %  tma_backend_bound
+                                                  #     14.3 %  tma_backend_bound_aux
+                                                  #     35.3 %  tma_frontend_bound       (7.76%)
+
+      11.189496690 seconds time elapsed
+
+      13.265100000 seconds user
+       1.680513000 seconds sys
+
+

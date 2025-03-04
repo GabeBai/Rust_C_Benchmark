@@ -1,0 +1,36 @@
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '32200':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+    12,221,788,745      cpu_core/cycles/
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+    10,529,018,970      cpu_core/instructions/           #    0.86  insn per cycle
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+        43,654,096      cpu_core/cache-references/
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+         8,466,753      cpu_core/cache-misses/           #   19.40% of all cache refs
+
+       3.473869043 seconds time elapsed
+
+
+Time taken to sort the array of size 40000000: 2.479943 seconds
+
+ Performance counter stats for './quicksort_perf_c 40000000':
+
+     7,909,860,366      cpu_atom/cycles/                                                        (0.20%)
+    14,485,128,811      cpu_core/cycles/                                                        (99.90%)
+     8,256,724,644      cpu_atom/instructions/           #    1.04  insn per cycle              (0.20%)
+    13,362,098,905      cpu_core/instructions/           #    0.92  insn per cycle              (99.90%)
+       228,363,657      cpu_atom/cache-references/                                              (0.20%)
+        47,587,558      cpu_core/cache-references/                                              (99.90%)
+        99,602,246      cpu_atom/cache-misses/           #   43.62% of all cache refs           (0.20%)
+        11,725,763      cpu_core/cache-misses/           #   24.64% of all cache refs           (99.90%)
+
+       3.939688657 seconds time elapsed
+
+       2.891709000 seconds user
+       0.054202000 seconds sys
+
+

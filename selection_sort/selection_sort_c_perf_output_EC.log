@@ -1,0 +1,36 @@
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '32696':
+
+    36,685,820,583      cpu_atom/cycles/                                                        (0.17%)
+    60,474,729,906      cpu_core/cycles/                                                        (99.81%)
+   171,282,679,914      cpu_atom/instructions/           #    4.67  insn per cycle              (0.16%)
+   450,636,601,272      cpu_core/instructions/           #    7.45  insn per cycle              (99.81%)
+       134,639,106      cpu_atom/cache-references/                                              (0.17%)
+       265,359,032      cpu_core/cache-references/                                              (99.81%)
+         5,180,489      cpu_atom/cache-misses/           #    3.85% of all cache refs           (0.17%)
+            85,484      cpu_core/cache-misses/           #    0.03% of all cache refs           (99.81%)
+
+      13.246607865 seconds time elapsed
+
+
+Time taken to sort the array of size 300000: 12.255006 seconds
+
+ Performance counter stats for './selection_sort_perf_c 300000':
+
+    31,727,432,838      cpu_atom/cycles/                                                        (0.30%)
+    60,560,708,805      cpu_core/cycles/                                                        (99.68%)
+   115,121,788,054      cpu_atom/instructions/           #    3.63  insn per cycle              (0.30%)
+   451,232,998,902      cpu_core/instructions/           #    7.45  insn per cycle              (99.68%)
+       239,483,174      cpu_atom/cache-references/                                              (0.30%)
+       265,905,954      cpu_core/cache-references/                                              (99.68%)
+        58,521,081      cpu_atom/cache-misses/           #   24.44% of all cache refs           (0.30%)
+           144,710      cpu_core/cache-misses/           #    0.05% of all cache refs           (99.68%)
+
+      14.267384908 seconds time elapsed
+
+      12.265988000 seconds user
+       0.010946000 seconds sys
+
+

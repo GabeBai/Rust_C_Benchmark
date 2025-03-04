@@ -1,0 +1,36 @@
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '34282':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+            43,711      cpu_core/cycles/
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+            17,052      cpu_core/instructions/           #    0.39  insn per cycle
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+             3,989      cpu_core/cache-references/
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+               891      cpu_core/cache-misses/           #   22.34% of all cache refs
+
+       0.974615257 seconds time elapsed
+
+
+Time taken to search graph of size 25000: 0.000003 seconds
+
+ Performance counter stats for './bfs_perf_c 25000':
+
+    14,669,088,688      cpu_atom/cycles/                                                        (1.07%)
+    20,914,344,315      cpu_core/cycles/                                                        (99.16%)
+    13,082,371,179      cpu_atom/instructions/           #    0.89  insn per cycle              (1.07%)
+    25,319,807,457      cpu_core/instructions/           #    1.21  insn per cycle              (99.16%)
+       746,207,569      cpu_atom/cache-references/                                              (1.07%)
+       555,613,500      cpu_core/cache-references/                                              (99.16%)
+       109,622,034      cpu_atom/cache-misses/           #   14.69% of all cache refs           (1.07%)
+       123,513,179      cpu_core/cache-misses/           #   22.23% of all cache refs           (99.16%)
+
+       5.228182609 seconds time elapsed
+
+       3.601869000 seconds user
+       0.651696000 seconds sys
+
+

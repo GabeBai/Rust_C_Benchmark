@@ -1,0 +1,36 @@
+
+[ Perf Stat Output ]
+
+ Performance counter stats for process id '33917':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+    14,023,936,574      cpu_core/cycles/
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     6,179,684,920      cpu_core/instructions/           #    0.44  insn per cycle
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+        61,625,822      cpu_core/cache-references/
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+        25,567,996      cpu_core/cache-misses/           #   41.49% of all cache refs
+
+       3.815845226 seconds time elapsed
+
+
+Time taken to search graph of size 30000: 2.839968 seconds
+
+ Performance counter stats for './dfs_perf_c 30000':
+
+    32,443,977,470      cpu_atom/cycles/                                                        (0.04%)
+    44,063,383,152      cpu_core/cycles/                                                        (99.96%)
+    23,298,921,546      cpu_atom/instructions/           #    0.72  insn per cycle              (0.04%)
+    42,525,905,773      cpu_core/instructions/           #    0.97  insn per cycle              (99.96%)
+     1,579,089,875      cpu_atom/cache-references/                                              (0.04%)
+     1,155,881,865      cpu_core/cache-references/                                              (99.96%)
+       536,184,916      cpu_atom/cache-misses/           #   33.96% of all cache refs           (0.04%)
+       180,105,758      cpu_core/cache-misses/           #   15.58% of all cache refs           (99.96%)
+
+      10.921140906 seconds time elapsed
+
+       8.053142000 seconds user
+       0.892066000 seconds sys
+
+

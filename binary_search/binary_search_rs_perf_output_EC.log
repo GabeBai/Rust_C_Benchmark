@@ -1,0 +1,35 @@
+
+[ Perf Stat Output ]
+
+Time taken to search array of size 80000000: 5.897823 seconds
+
+ Performance counter stats for 'cargo run --bin binary_search_perf --release -- 80000000':
+
+         15,321.96 msec task-clock                       #    1.333 CPUs utilized
+             5,455      context-switches                 #  356.025 /sec
+               405      cpu-migrations                   #   26.433 /sec
+           462,999      page-faults                      #   30.218 K/sec
+    32,993,071,524      cpu_atom/cycles/                 #    2.153 GHz                         (6.40%)
+    73,824,410,434      cpu_core/cycles/                 #    4.818 GHz                         (95.64%)
+    37,673,005,145      cpu_atom/instructions/           #    1.14  insn per cycle              (7.56%)
+   121,322,264,694      cpu_core/instructions/           #    3.68  insn per cycle              (95.64%)
+     7,315,420,848      cpu_atom/branches/               #  477.447 M/sec                       (7.56%)
+    20,631,348,558      cpu_core/branches/               #    1.347 G/sec                       (95.64%)
+       271,761,149      cpu_atom/branch-misses/          #    3.71% of all branches             (7.61%)
+       275,741,591      cpu_core/branch-misses/          #    3.77% of all branches             (95.64%)
+             TopdownL1 (cpu_core)                 #     45.3 %  tma_backend_bound
+                                                  #      7.1 %  tma_bad_speculation
+                                                  #     21.1 %  tma_frontend_bound
+                                                  #     26.5 %  tma_retiring             (95.64%)
+             TopdownL1 (cpu_atom)                 #     25.4 %  tma_bad_speculation
+                                                  #     24.9 %  tma_retiring             (7.69%)
+                                                  #     13.3 %  tma_backend_bound
+                                                  #     13.3 %  tma_backend_bound_aux
+                                                  #     36.4 %  tma_frontend_bound       (7.68%)
+
+      11.495652310 seconds time elapsed
+
+      14.423467000 seconds user
+       0.855573000 seconds sys
+
+
