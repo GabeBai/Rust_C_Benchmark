@@ -1,10 +1,14 @@
 
- Performance counter stats for process id '1106031':
+ Performance counter stats for process id '32956':
 
-   <not supported>      cycles                                                                
-   <not supported>      instructions                                                          
-   <not supported>      cache-references                                                      
-   <not supported>      cache-misses                                                          
+    79,789,545,222      cpu_atom/cycles/                                                        (0.03%)
+   104,475,607,228      cpu_core/cycles/                                                        (99.94%)
+   398,007,525,245      cpu_atom/instructions/           #    4.99  insn per cycle              (0.03%)
+   540,292,506,636      cpu_core/instructions/           #    5.17  insn per cycle              (99.94%)
+         1,455,616      cpu_atom/cache-references/                                              (0.03%)
+       235,927,218      cpu_core/cache-references/                                              (99.94%)
+            36,235      cpu_atom/cache-misses/           #    2.49% of all cache refs           (0.03%)
+           170,755      cpu_core/cache-misses/           #    0.07% of all cache refs           (99.94%)
 
-       1.001135826 seconds time elapsed
+      23.022886151 seconds time elapsed
 
