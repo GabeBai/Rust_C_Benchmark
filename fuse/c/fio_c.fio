@@ -1,0 +1,31 @@
+[global]
+directory=/mnt/fuse_c    # Monut directory
+ioengine=sync
+time_based
+runtime=60s
+group_reporting
+direct=1
+size=1G                # Specify the test file size as 1GB.
+overwrite=1
+filename=test.txt
+
+[seq-read]
+bs=4k
+rw=read
+
+[seq-write]
+bs=4k
+rw=write
+
+[rand-read]
+bs=4k
+rw=randread
+
+[rand-write]
+bs=4k
+rw=randwrite
+
+[metadata]
+bs=4k
+rw=randwrite
+filename=test.txt
