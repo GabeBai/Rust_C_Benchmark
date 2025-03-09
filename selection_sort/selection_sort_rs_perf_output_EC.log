@@ -1,14 +1,35 @@
 
- Performance counter stats for process id '11012':
+[ Perf Stat Output ]
 
-   512,575,444,191      cpu_atom/cycles/                                                        (0.00%)
-   724,937,590,212      cpu_core/cycles/                                                        (100.00%)
- 1,721,128,965,712      cpu_atom/instructions/           #    3.36  insn per cycle              (0.00%)
- 3,016,481,721,314      cpu_core/instructions/           #    4.16  insn per cycle              (100.00%)
-     1,970,576,854      cpu_atom/cache-references/                                              (0.00%)
-       468,193,806      cpu_core/cache-references/                                              (100.00%)
-       342,937,798      cpu_atom/cache-misses/           #   17.40% of all cache refs           (0.00%)
-           539,999      cpu_core/cache-misses/           #    0.12% of all cache refs           (100.00%)
+Time taken to sort the array of size 300000: 21.138206 seconds
 
-     148.157970295 seconds time elapsed
+ Performance counter stats for 'cargo run --bin selection_sort_perf --release -- 300000':
+
+         29,044.81 msec task-clock                       #    1.153 CPUs utilized
+             5,670      context-switches                 #  195.216 /sec
+               365      cpu-migrations                   #   12.567 /sec
+           385,872      page-faults                      #   13.285 K/sec
+    66,274,633,065      cpu_atom/cycles/                 #    2.282 GHz                         (3.21%)
+   141,212,986,388      cpu_core/cycles/                 #    4.862 GHz                         (97.89%)
+    80,617,860,048      cpu_atom/instructions/           #    1.22  insn per cycle              (3.78%)
+   609,091,225,558      cpu_core/instructions/           #    9.19  insn per cycle              (97.89%)
+    16,215,166,109      cpu_atom/branches/               #  558.281 M/sec                       (3.80%)
+   194,029,677,354      cpu_core/branches/               #    6.680 G/sec                       (97.89%)
+       525,780,765      cpu_atom/branch-misses/          #    3.24% of all branches             (3.84%)
+       262,010,687      cpu_core/branch-misses/          #    1.62% of all branches             (97.89%)
+             TopdownL1 (cpu_core)                 #      4.6 %  tma_backend_bound
+                                                  #      3.6 %  tma_bad_speculation
+                                                  #     37.1 %  tma_frontend_bound
+                                                  #     54.7 %  tma_retiring             (97.89%)
+             TopdownL1 (cpu_atom)                 #     24.0 %  tma_bad_speculation
+                                                  #     26.3 %  tma_retiring             (3.81%)
+                                                  #     12.7 %  tma_backend_bound
+                                                  #     12.7 %  tma_backend_bound_aux
+                                                  #     36.9 %  tma_frontend_bound       (3.82%)
+
+      25.189573551 seconds time elapsed
+
+      28.261999000 seconds user
+       0.735604000 seconds sys
+
 
