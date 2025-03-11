@@ -7,100 +7,112 @@ use std::time::{Duration, Instant};
 use nix::unistd::{fork, ForkResult, Pid};
 use nix::sys::signal::{kill, Signal};
 use nix::sys::wait::waitpid;
+use std::rc::Rc;
 use std::cell::RefCell;
 use libc::{clock_gettime, timespec, CLOCK_MONOTONIC};
 
-// 普通结构体
-struct MyStruct {
+struct TreeNode {
     value: i64,
+    left: Option<Box<TreeNode>>,
+    right: Option<Box<TreeNode>>,
 }
 
-impl MyStruct {
-    fn new(value: i64) -> Self {
-        Self { value }
-    }
-
-    fn increment(&mut self) {
-        self.value += 1;
-    }
-
-    fn get_value(&self) -> i64 {
-        self.value
-    }
-}
-
-// 带 RefCell 的结构体
-struct MyStructRefCell {
-    value: RefCell<i64>,
-}
-
-impl MyStructRefCell {
+impl TreeNode {
     fn new(value: i64) -> Self {
         Self {
-            value: RefCell::new(value),
+            value,
+            left: None,
+            right: None,
         }
     }
 
-    fn increment(&self) {
-        *self.value.borrow_mut() += 1;
-    }
-
-    fn get_value(&self) -> i64 {
-        *self.value.borrow()
-    }
-}
-
-// 计算时间差（秒）
-fn diff_timespec(time1: &timespec, time0: &timespec) -> f64 {
-    (time1.tv_sec - time0.tv_sec) as f64 +
-        (time1.tv_nsec - time0.tv_nsec) as f64 / 1_000_000_000.0
-}
-
-// 测试 MyStruct
-fn test_mystruct(iterations: usize) -> f64 {
-    let mut obj = MyStruct::new(0);
-    let mut start_time = timespec { tv_sec: 0, tv_nsec: 0 };
-    let mut end_time = timespec { tv_sec: 0, tv_nsec: 0 };
-
-    unsafe { clock_gettime(CLOCK_MONOTONIC, &mut start_time) };
-
-    for i in 0..iterations {
-        obj.increment();
-        if i % 1_000_000_000 == 0 { 
-            sleep(Duration::from_nanos(1)); // 防止编译器优化
+    fn insert(&mut self, value: i64) {
+        if value < self.value {
+            match &mut self.left {
+                Some(left) => left.insert(value),
+                None => self.left = Some(Box::new(TreeNode::new(value))),
+            }
+        } else {
+            match &mut self.right {
+                Some(right) => right.insert(value),
+                None => self.right = Some(Box::new(TreeNode::new(value))),
+            }
         }
     }
 
-    unsafe { clock_gettime(CLOCK_MONOTONIC, &mut end_time) };
+    fn sum(&self) -> i64 {
+        let left_sum = self.left.as_ref().map_or(0, |node| node.sum());
+        let right_sum = self.right.as_ref().map_or(0, |node| node.sum());
+        self.value + left_sum + right_sum
+    }
+}
 
-    let elapsed = diff_timespec(&end_time, &start_time);
-    println!("MyStruct: final value = {}, time = {:.6} seconds", obj.get_value(), elapsed);
+struct TreeNodeRefCell {
+    value: i64,
+    left: RefCell<Option<Rc<TreeNodeRefCell>>>,
+    right: RefCell<Option<Rc<TreeNodeRefCell>>>,
+}
+
+impl TreeNodeRefCell {
+    fn new(value: i64) -> Rc<Self> {
+        Rc::new(Self {
+            value,
+            left: RefCell::new(None),
+            right: RefCell::new(None),
+        })
+    }
+
+    fn insert(self_rc: &Rc<Self>, value: i64) {
+        if value < self_rc.value {
+            let mut left = self_rc.left.borrow_mut();
+            match &*left {
+                Some(left_node) => TreeNodeRefCell::insert(left_node, value),
+                None => *left = Some(TreeNodeRefCell::new(value)),
+            }
+        } else {
+            let mut right = self_rc.right.borrow_mut();
+            match &*right {
+                Some(right_node) => TreeNodeRefCell::insert(right_node, value),
+                None => *right = Some(TreeNodeRefCell::new(value)),
+            }
+        }
+    }
+
+    fn sum(self_rc: &Rc<Self>) -> i64 {
+        let left_sum = self_rc.left.borrow().as_ref().map_or(0, |node| TreeNodeRefCell::sum(node));
+        let right_sum = self_rc.right.borrow().as_ref().map_or(0, |node| TreeNodeRefCell::sum(node));
+        self_rc.value + left_sum + right_sum
+    }
+}
+
+fn test_tree(iterations: usize) -> f64 {
+    let mut tree = TreeNode::new(0);
+    let start_time = Instant::now();
+
+    for i in 1..=iterations {
+        tree.insert(i as i64);
+    }
+
+    let sum = tree.sum();
+    let elapsed = start_time.elapsed().as_secs_f64();
+    println!("Tree: final sum = {}, time = {:.6} seconds", sum, elapsed);
     elapsed
 }
 
-// 测试 MyStructRefCell
-fn test_mystruct_refcell(iterations: usize) -> f64 {
-    let obj = MyStructRefCell::new(0);
-    let mut start_time = timespec { tv_sec: 0, tv_nsec: 0 };
-    let mut end_time = timespec { tv_sec: 0, tv_nsec: 0 };
+fn test_tree_refcell(iterations: usize) -> f64 {
+    let tree = TreeNodeRefCell::new(0);
+    let start_time = Instant::now();
 
-    unsafe { clock_gettime(CLOCK_MONOTONIC, &mut start_time) };
-
-    for i in 0..iterations {
-        obj.increment();
-        if i % 1_000_000_000 == 0 {
-            sleep(Duration::from_nanos(1));
-        }
+    for i in 1..=iterations {
+        TreeNodeRefCell::insert(&tree, i as i64);
     }
 
-    unsafe { clock_gettime(CLOCK_MONOTONIC, &mut end_time) };
-
-    let elapsed = diff_timespec(&end_time, &start_time);
-    println!("MyStructRefCell: final value = {}, time = {:.6} seconds", obj.get_value(), elapsed);
+    let sum = TreeNodeRefCell::sum(&tree);
+    let elapsed = start_time.elapsed().as_secs_f64();
+    println!("TreeRefCell: final sum = {}, time = {:.6} seconds", sum, elapsed);
     elapsed
 }
 
-// 运行 `perf` 进行基准测试
 fn run_perf_test(test_function: fn(usize) -> f64, iterations: usize, label: &str) {
     let parent_pid = std::process::id();
 
@@ -122,16 +134,14 @@ fn run_perf_test(test_function: fn(usize) -> f64, iterations: usize, label: &str
         Ok(ForkResult::Parent { child }) => {
             let child_pid = child.as_raw();
 
-            sleep(Duration::from_millis(500)); // 让 `perf stat` 启动完成
+            sleep(Duration::from_millis(500)); 
 
             println!("\nRunning {} test with {} iterations...\n", label, iterations);
             let elapsed_time = test_function(iterations);
 
-            // 终止 `perf`
             let _ = kill(Pid::from_raw(child_pid), Signal::SIGINT);
             let _ = waitpid(Pid::from_raw(child_pid), None);
 
-            // 读取并打印 `perf` 输出
             if let Ok(file) = File::open("perf_output_normal.log") {
                 let reader = BufReader::new(file);
                 println!("\n[ Perf Stat Output for {} ]", label);
@@ -179,16 +189,14 @@ fn run_refcell_perf_test(test_function: fn(usize) -> f64, iterations: usize, lab
         Ok(ForkResult::Parent { child }) => {
             let child_pid = child.as_raw();
 
-            sleep(Duration::from_millis(500)); // 让 `perf stat` 启动完成
+            sleep(Duration::from_millis(500));
 
             println!("\nRunning {} test with {} iterations...\n", label, iterations);
             let elapsed_time = test_function(iterations);
 
-            // 终止 `perf`
             let _ = kill(Pid::from_raw(child_pid), Signal::SIGINT);
             let _ = waitpid(Pid::from_raw(child_pid), None);
 
-            // 读取并打印 `perf` 输出
             if let Ok(file) = File::open("perf_output_refcell.log") {
                 let reader = BufReader::new(file);
                 println!("\n[ Perf Stat Output for {} ]", label);
@@ -226,6 +234,6 @@ fn main() {
         1_000_000
     };
 
-    run_perf_test(test_mystruct, iterations, "MyStruct");
-    run_refcell_perf_test(test_mystruct_refcell, iterations, "MyStructRefCell");
+    run_perf_test(test_tree, iterations, "MyStruct");
+    run_refcell_perf_test(test_tree_refcell, iterations, "MyStructRefCell");
 }

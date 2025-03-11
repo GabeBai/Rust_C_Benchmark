@@ -1,14 +1,1 @@
-
- Performance counter stats for process id '108812':
-
-       371,473,425      cpu_atom/cycles/                                                        (8.55%)
-       545,893,135      cpu_core/cycles/                                                        (92.46%)
-       455,174,780      cpu_atom/instructions/           #    1.23  insn per cycle              (8.55%)
-     2,594,818,998      cpu_core/instructions/           #    4.75  insn per cycle              (92.46%)
-         7,568,267      cpu_atom/cache-references/                                              (8.55%)
-           196,548      cpu_core/cache-references/                                              (92.46%)
-         3,310,872      cpu_atom/cache-misses/           #   43.75% of all cache refs           (8.55%)
-            70,852      cpu_core/cache-misses/           #   36.05% of all cache refs           (92.46%)
-
-       2.002316653 seconds time elapsed
-
+sh: perf: command not found
