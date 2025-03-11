@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '108812':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+       251,013,127      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     1,201,013,916      cpu_core/instructions/           #    4.78  insn per cycle            
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+            34,255      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+             8,760      cpu_core/cache-misses/           #   25.57% of all cache refs         
+
+       1.001230131 seconds time elapsed
+
