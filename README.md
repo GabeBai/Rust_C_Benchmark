@@ -76,9 +76,17 @@ Run the benchmark executable to generate performance data. For example:
 To profile using `perf` and generate a flamegraph:
 
 ```bash
-perf stat -e cycles,instructions,cache-references,cache-misses ./your_program
-perf script | stackcollapse-perf.pl > out.folded
-flamegraph.pl out.folded > flamegraph.svg
+//C
+perf record -F 99 -g --call-graph=dwarf -o out.perf ./your_program
+
+//Rust
+perf record -F 99 -g --call-graph=dwarf -o out.perf ./target/release/your_program
+
+//flamegraph
+perf script -f -i out.perf | ../FlameGraph/stackcollapse-perf.pl > out.folded
+../FlameGraph/flamegraph.pl out.folded > flamegraph.svg
+xdg-open flamegraph.svg
+
 ```
 
 ## 🧐 Analysis
