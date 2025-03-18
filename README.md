@@ -2,11 +2,11 @@
 
 A collection of benchmarks to compare the performance of algorithms implemented in Rust versus C.
 
-## Overview
+## 📖 Overview
 
 This repository contains multiple implementations of common algorithms in both Rust and C. The goal is to benchmark their performance, compare efficiency between the two languages, and analyze results using profiling tools such as flamegraphs.
 
-## Directory Structure
+## ⚙️ Directory Structure
 
 Each directory in the repository targets a specific algorithm or operation:
 
@@ -24,17 +24,19 @@ Each folder typically contains:
 - Makefiles (or Cargo.toml for Rust) for building the benchmarks.
 - Performance logs and flamegraph outputs (e.g., `.svg` files) for profiling analysis.
 
-## Prerequisites
+##  📋 Prerequisites
 
 Before running the benchmarks, ensure you have the following installed:
 
-- **Rust**: Install from [rustup.rs](https://rustup.rs) if not already set up.
+- **[Rust](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+)**: Install from [rustup.rs](https://rustup.rs) if not already set up.
 - **C Compiler**: GCC.
 - **Make**: To build the C projects using provided Makefiles.
-- **perf**: Linux performance analysis tool.
-- **Flamegraph**: A tool to generate flamegraphs from perf data. Check out [FlameGraph on GitHub](https://github.com/brendangregg/FlameGraph) for installation instructions.
+- **[perf](https://www.brendangregg.com/perf.html
+)**: Linux performance analysis tool.
+- **[Flamegraph](https://github.com/brendangregg/FlameGraph)**: A tool to generate flamegraphs from perf data. Check out [FlameGraph on GitHub](https://github.com/brendangregg/FlameGraph) for installation instructions.
 
-## Getting Started
+## 🚀 Getting Started
 
 1. **Clone the Repository:**
 
@@ -74,18 +76,26 @@ Run the benchmark executable to generate performance data. For example:
 To profile using `perf` and generate a flamegraph:
 
 ```bash
-perf record -F 99 -a -g -- ./your_benchmark_executable
+perf stat -e cycles,instructions,cache-references,cache-misses ./your_program
 perf script | stackcollapse-perf.pl > out.folded
 flamegraph.pl out.folded > flamegraph.svg
 ```
 
-## Analysis
+## 🧐 Analysis
 
 The repository allows you to compare the performance between Rust and C implementations by reviewing:
 
-- **Execution Times:** How fast each implementation runs.
-- **CPU Usage:** Profiling data to see where time is spent.
-- **Flamegraphs:** Visual representations of the call stack to identify bottlenecks.
+- **Execution Times:** How fast each algorithm runs.
+![alt text](https://github.com/GabeBai/Rust_C_Benchmark/blob/main/images/Common%20Algorithm%20Execution%20Time.png?raw=true)
+- **[Flamegraphs](https://github.com/brendangregg/FlameGraph):** Visual representations of the call stack to identify bottlenecks.
+Example: BFS
+![alt text](https://github.com/GabeBai/Rust_C_Benchmark/blob/main/images/BFS-C.png?raw=true)
+![alt text](https://github.com/GabeBai/Rust_C_Benchmark/blob/main/images/BFS-Rust.png?raw=true)
+- **Rust compile time check vs runtime check** 
+![alt text](https://github.com/GabeBai/Rust_C_Benchmark/blob/main/images/Rust%20compile%20time%20check%20vs%20runtime%20check.png?raw=true)
+- **File System Performance** 
+[Details](https://github.com/GabeBai/Rust_C_Benchmark/blob/main/fuse/README.md)
+![alt text](https://github.com/GabeBai/Rust_C_Benchmark/blob/main/images/File%20System%20Performance.png?raw=true)
 
 These insights can help you understand the trade-offs between Rust’s safety features and C’s low-level optimizations.
 
